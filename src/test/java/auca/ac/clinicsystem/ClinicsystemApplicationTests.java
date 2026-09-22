@@ -1,0 +1,13 @@
+package auca.ac.clinicsystem;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ClinicsystemApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
