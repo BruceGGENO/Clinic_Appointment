@@ -1,11 +1,12 @@
-package kigali.clinic.rw.service;
+package auca.ac.clinicsystem.service;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kigali.clinic.rw.domain.Office;
-import kigali.clinic.rw.repository.OfficeRepository;
-import java.util.*;
+import auca.ac.clinicsystem.domain.Office;
+import auca.ac.clinicsystem.repository.OfficeRepository;
 
 @Service 
 public class OfficeService {

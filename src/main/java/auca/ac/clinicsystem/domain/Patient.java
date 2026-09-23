@@ -1,4 +1,4 @@
-package kigali.clinic.rw.domain;
+package auca.ac.clinicsystem.domain;
 
 import java.sql.Date;
 import java.util.ArrayList;

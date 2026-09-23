@@ -1,4 +1,4 @@
-package kigali.clinic.rw.domain;
+package auca.ac.clinicsystem.domain;
 
 import java.util.ArrayList;
 import java.util.List;

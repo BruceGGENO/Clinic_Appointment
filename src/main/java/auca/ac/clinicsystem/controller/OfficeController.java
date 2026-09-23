@@ -1,4 +1,4 @@
-package kigali.clinic.rw.controller;
+package auca.ac.clinicsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,29 +8,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kigali.clinic.rw.domain.Office;
-import kigali.clinic.rw.service.OfficeService;
-import kigali.clinic.rw.repository.OfficeRepository;
+import auca.ac.clinicsystem.domain.Office;
+import auca.ac.clinicsystem.service.OfficeService;
 
-@RestController 
-@RequestMapping (value="/api/office")
+@RestController
+@RequestMapping(value = "/api/office")
 public class OfficeController {
 
-    @Autowired 
+    @Autowired
     private OfficeService offServe;
-    
 
+    @PostMapping(value = "/save")
+    public ResponseEntity<?> saveOffice(@RequestBody Office office) {
+        String returnedMessage = offServe.saveOffice(office);
 
-    @PostMapping(value = "/save")  
-    public ResponseEntity<?> saveOffice(@RequestBody Office office){
-       String returnedMessage =  offServe.saveOffice(office);
-
-       if(returnedMessage.equals("Office is saved successfully")){
-        return new ResponseEntity<>(returnedMessage,HttpStatus.OK);
-       }else{
-        return new ResponseEntity<>(returnedMessage, HttpStatus.CONFLICT);
-       }
+        if (returnedMessage.equals("Office is saved successfully")) {
+            return new ResponseEntity<>(returnedMessage, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(returnedMessage, HttpStatus.CONFLICT);
+        }
 
     }
-    
+
 }
