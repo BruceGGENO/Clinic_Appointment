@@ -5,34 +5,41 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
-@Entity 
-@Table (name="patient")
+@Entity
+@Table(name = "patient")
 public class Patient {
-    
-    @Id 
-    @GeneratedValue (strategy = GenerationType.UUID)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column (name="first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column (name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column (name="date_of_birth")
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    @OneToMany (mappedBy = "patient")
+    @OneToMany(mappedBy = "patient")
     private List<Appointment> appointments = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     public String getFirstName() {
         return firstName;
@@ -66,7 +73,12 @@ public class Patient {
         this.appointments = appointments;
     }
 
-    
+    public UUID getId() {
+        return id;
+    }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
 }
